@@ -1,0 +1,68 @@
+# ----------------------------------------------------
+# Programa 1: Identificar la longitud de una palabra
+# ----------------------------------------------------
+
+# El programa solicitará al usuario una palabra y comprobará si su longitud está en el rango correcto (4-8 letras).
+# Si la palabra es demasiado corta o demasiado larga, se volverá a pedir una nueva palabra.
+
+while True:
+    # Solicitamos al usuario que ingrese una palabra (tipo de dato: string)
+    palabra = input("Ingresa una palabra: ")
+
+    # Verificamos que la entrada no contenga números
+    if any(char.isdigit() for char in palabra):
+        print("Por favor, ingresa solo letras. No se permiten números.")  # Se solicita ingresar solo letras
+        continue
+
+    # Calculamos la longitud de la palabra usando la función len() (el resultado es un entero)
+    longitud = len(palabra)
+
+    # Verificamos si la longitud de la palabra está en el rango correcto (entre 4 y 8 letras)
+    if 4 <= longitud <= 8:
+        print("La palabra es correcta ya que contiene la cantidad requerida de letras.")  # La palabra es válida y está en el rango correcto
+        break  # Salimos del bucle porque se ingresó una palabra válida
+    elif longitud < 4:
+        # Si la palabra tiene menos de 4 letras, se indica cuántas letras faltan y se solicita una nueva palabra
+        print(f"Hacen falta letras. Solo tiene {longitud} letras. Por favor, intenta de nuevo.")
+    else:
+        # Si la palabra tiene más de 8 letras, se indica cuántas letras sobran y se solicita una nueva palabra
+        print(f"Sobran letras. Tiene {longitud} letras. Por favor, intenta de nuevo.")
+
+# Mensaje de despedida
+print("Gracias por usar el programa de validación de palabras. ¡Hasta la próxima!")
+
+# ------------------------------------------------
+# Programa 2: Encontrar el cuadrante de un punto
+# ------------------------------------------------
+
+
+# El programa solicitará las coordenadas X y Y de un punto y determinará en cuál de los 4 cuadrantes se encuentra.
+# Si alguna de las coordenadas es 0, se volverá a solicitar hasta que ambas sean diferentes de 0.
+
+while True:
+    try:
+        # Solicitamos al usuario que ingrese las coordenadas X y Y (ambas deben ser números)
+        x = float(input("Ingrese la coordenada X: "))
+        y = float(input("Ingrese la coordenada Y: "))
+
+        # Verificamos que ninguna de las coordenadas sea 0, ya que en ese caso el punto no pertenece a ningún cuadrante
+        if x == 0 or y == 0:
+            print("Las coordenadas no pueden ser 0. Por favor, intenta de nuevo.")  # Se solicita ingresar nuevamente las coordenadas
+        else:
+            # Determinamos en qué cuadrante se encuentra el punto según los valores de X y Y
+            if x > 0 and y > 0:
+                print("El punto se encuentra en el cuadrante I.")  # Cuadrante I: X > 0, Y > 0
+            elif x < 0 and y > 0:
+                print("El punto se encuentra en el cuadrante II.")  # Cuadrante II: X < 0, Y > 0
+            elif x < 0 and y < 0:
+                print("El punto se encuentra en el cuadrante III.")  # Cuadrante III: X < 0, Y < 0
+            elif x > 0 and y < 0:
+                print("El punto se encuentra en el cuadrante IV.")  # Cuadrante IV: X > 0, Y < 0
+            break  # Salimos del bucle porque las coordenadas son válidas y se ha determinado el cuadrante
+    except ValueError:
+        print("Entrada no válida. Por favor, ingresa números válidos.")  # Se maneja la excepción para entradas no numéricas
+
+# Mensaje de despedida
+print("Gracias por usar el programa de cuadrantes. ¡Hasta la próxima!")
+
+input()
